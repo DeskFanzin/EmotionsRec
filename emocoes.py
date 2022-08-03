@@ -9,7 +9,6 @@ while(1):
     ret, frame = cap.read()
     cv2.imshow("Video", frame)
     
-    #codigo do indiano
     result = DeepFace.analyze(frame, actions=['emotion'], enforce_detection=False)
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
