@@ -1,13 +1,12 @@
 import cv2
 from deepface import DeepFace
-faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
 
+faceCascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')
 
 cap = cv2.VideoCapture(0)
 
-while(1):
+while(True):
     ret, frame = cap.read()
-    cv2.imshow("Video", frame)
     
     result = DeepFace.analyze(frame, actions=['emotion'], enforce_detection=False)
 
@@ -26,6 +25,8 @@ while(1):
     k = cv2.waitKey(30) & 0xff
     if k == 27:
         break
+    
+    
 
 cap.release()
 cv2.destroyAllWindows()
